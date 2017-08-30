@@ -179,6 +179,7 @@ class Game {    //генератор игр
         let lineTypeNumber = 0;
         linesButton.onclick = function () {
             lineTypeNumber++;
+            clear();
             if (lineTypeNumber === 10) lineTypeNumber = 0;
             game._displayLine(lineTypeNumber);
         }
@@ -186,45 +187,52 @@ class Game {    //генератор игр
     _displayLine(type) {    //отрисовка выигрышных линий
         const canvas = document.querySelector('.lineScreen');
         const ctx = canvas.getContext('2d');
-        const clear = ctx.clearRect(0,0,270,150);
         ctx.strokeStyle = 'purple';
         ctx.lineWidth = 4;
         switch (type) {     //переключатель выигрышных линий
             case 0:
-                clear();
                 break;
             case 1:
-                drawFiveLine(ctx, 0);
+                drawFiveLine(0);
                 break;
             case 2:
-                drawFiveLine(ctx, 1);
+                drawFiveLine(1);
                 break;
             case 3:
-                drawFiveLine(ctx, 2);
+                drawFiveLine(2);
                 break;
             case 4:
-                drawThreeLine(ctx, 0);
+                drawThreeLine(0);
                 break;
             case 5:
-                drawThreeLine(ctx, 1);
+                drawThreeLine(1);
                 break;
             case 6:
-                drawThreeLine(ctx, 2);
+                drawThreeLine(2);
                 break;
             case 7:
-                drawBackThreeLine(ctx, 0);
+                drawBackThreeLine(0);
                 break;
             case 8:
-                drawBackThreeLine(ctx, 1);
+                drawBackThreeLine(1);
                 break;
             case 9:
-                drawBackThreeLine(ctx, 2);
+                drawBackThreeLine(2);
                 break;
         }
     }
 }
 
-function drawFiveLine(ctx, line) {  //горизонтальная выигрышная линия
+const canvas = document.querySelector('.lineScreen');
+const ctx = canvas.getContext('2d');
+ctx.strokeStyle = 'purple';
+ctx.lineWidth = 4;
+
+function clear() {
+    ctx.clearRect(0,0,270,150);
+}
+
+function drawFiveLine(line) {  //горизонтальная выигрышная линия
     ctx.beginPath();
     ctx.moveTo(2, line * 50 + 2);
     ctx.lineTo(268, line * 50 + 2);
@@ -233,7 +241,7 @@ function drawFiveLine(ctx, line) {  //горизонтальная выигры�
     ctx.closePath();
     ctx.stroke();
 }
-function drawThreeLine(ctx, line) {     //диагональная выигрышная линия
+function drawThreeLine(line) {     //диагональная выигрышная линия
     ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.moveTo(8 + 50 * line, 2);
@@ -245,7 +253,7 @@ function drawThreeLine(ctx, line) {     //диагональная выигры�
     ctx.closePath();
     ctx.stroke();
 }
-function drawBackThreeLine(ctx, line) {     //обратная диагональная выигрышная линия
+function drawBackThreeLine(line) {     //обратная диагональная выигрышная линия
     ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.moveTo(8 + 50 * line, 148);
