@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+}
+
+.game {
+    position: relative;
+    width: 270px;
+    height: 150px;
+    overflow: hidden;
+    margin: 300px auto auto auto;
+}
+
+.controlPanel {
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+    margin: 25px auto;
+}
+
+@keyframes blink {
+    100% { color: rgba(34, 34, 34, 0); }
+}
+
+.button {
+    width: 70px;
+    display: inline-block;
+    line-height: 25px;
+    color: gray;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.blink {
+    animation: blink 1s linear infinite;
+}
+
+.button:hover {
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.button:disabled {
+    color: lightgray;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    cursor: auto;
+}
+
+.slotScreen {
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slotScreen:nth-child(1) {
+    left: 25px;
+}
+
+.slotScreen:nth-child(2) {
+    left: 80px;
+}
+
+.slotScreen:nth-child(3) {
+    left: 135px;
+}
+
+.slotScreen:nth-child(4) {
+    left: 190px;
+}
+
+.slotScreen:nth-child(5) {
+    left: 245px;
+}
+
+.lineScreen {
+    position: relative;
+    z-index: 10;
+}
+
